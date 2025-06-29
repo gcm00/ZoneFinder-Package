@@ -91,6 +91,7 @@ def identify_frequent_price_levels(
 
 
     if show_output:
+        print(f"---- FREQUENT PRICE LEVELS (rounded to {rounding_digits})----\n")
         print(f"\n=== Top {top_n} Most Frequent Highs ===")
         for level, count in frequent_highs:
             print(f"Price: {level:.{rounding_digits}f}  |  Occurrence: {count}")
@@ -225,6 +226,10 @@ def identify_support_resistance_zones(
 
     if show_output:
         def _print_zones(df, label):
+            if chain_comparison:
+                print(f"---- FREQUENT SUPPORT|RESISTANCE ZONES (Chain Comparison) ----\n")
+            else:
+                print(f"---- FREQUENT SUPPORT|RESISTANCE ZONES (Base Comparison) ----\n")
             print(f"\n====== Top {top_n} Support/Resistance Zones for {label} ======")
             if df.empty:
                 print("No zones detected.")
